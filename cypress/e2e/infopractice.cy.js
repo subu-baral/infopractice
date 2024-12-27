@@ -1,7 +1,24 @@
 import { loginSelectors } from "../support/selectors/loginselectors";
 describe('login form of cqnoval', () => {
 
-  it('should log in successfully', () => {
+  it ('invalid login with invalid username', () =>{
+    cy.visit(loginSelectors.cqurlSelector);
+
+    cy.get (loginSelectors.userNameSelector).clear().type('tatsamaas');
+    cy.get (loginSelectors.passwordSelector).clear().type('Iphone123!@#');
+    cy.get(loginSelectors.loginButtonSelector).should('contain.text', 'Log In').click();
+    cy.get('.ant-notification-notice-message') // Selector for the main message
+    .should('be.visible')
+    .and('contain.text', 'Try again...');
+
+  cy.get('.ant-notification-notice-description') // Selector for the detailed description
+    .should('be.visible')
+    .and('contain.text', 'Invalid username or password!');
+    cy.wait(300);
+
+  } )
+
+   it ('should login successfully', () => {
 
     // Visit the URL
     cy.visit(loginSelectors.cqurlSelector);
