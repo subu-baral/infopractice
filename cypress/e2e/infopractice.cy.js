@@ -4,7 +4,9 @@ describe('login form of cqnoval', () => {
   it('should log in successfully', () => {
 
     // Visit the URL
-    cy.visit('https://cqweb.info.com.np/');
+    cy.visit(loginSelectors.cqurlSelector);
+    cy.get(loginSelectors.cqLogoSelector) // Select the image by its alt attribute
+  .should('have.attr', 'src', 'assets/images/logo.png');
   
     // Input username and password
     cy.get (loginSelectors.userNameSelector).clear().type('tatsam');
