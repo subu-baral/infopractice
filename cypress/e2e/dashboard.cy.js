@@ -1,5 +1,36 @@
 import { loginSelectors } from "../support/selectors/loginselectors";
 describe('login form of cqnoval', () => {
+    
+    // beforeEach(() => {
+    //     // Visit the page to test scrolling
+    //     cy.visit('/scrollable-page'); // Replace with the actual URL
+    //   });
+    
+      it('should scroll the page to the bottom', () => {
+        cy.scrollTo('bottom'); // Scrolls the page to the bottom
+    
+        // Verify scrolling by checking the position or an element at the bottom
+        cy.get('#footer') // Replace with a footer or bottom element selector
+          .should('be.visible');
+      });
+    
+    //   it('should scroll the page to specific coordinates', () => {
+    //     // Scroll to specific x, y coordinates on the page
+    //     cy.scrollTo(0, 500); // Scroll 500px down
+    
+    //     // Verify the scroll position
+    //     cy.window().its('scrollY').should('equal', 500);
+    //   });
+    
+    //   it('should scroll the page back to the top', () => {
+    //     cy.scrollTo('top'); // Scrolls the page to the top
+    
+    //     // Verify the page is at the top
+    //     cy.window().its('scrollY').should('equal', 0);
+    //   });
+    
+
+    
 
     it('should run dashboard functionality successfully', () => {
         cy.visit(loginSelectors.cqurlSelector);
